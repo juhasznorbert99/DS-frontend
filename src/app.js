@@ -1,15 +1,9 @@
 import React from 'react'
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
-import UserContainer from "./user/user-container";
-import SensorContainer from "./sensor/sensor-container";
 
 import ErrorPage from './commons/errorhandling/error-page';
 import styles from './commons/styles/project-style.css';
-import DeviceContainer from "./device/device-container";
-import Login from "./user/user-login";
-import ViewDetailsContainer from "./user/user-view-details";
-import ViewSensorDataContainer from "./user/user-sensorData-view";
-import UserChartContainer from "./user/user-chart";
+import AjuteurContainer from "./user/ajuteur-container";
 
 class App extends React.Component {
 
@@ -17,11 +11,9 @@ class App extends React.Component {
         userRole: "",
     }
     
-    reload(){
-        this.setState({userRole: JSON.parse(localStorage.getItem('clientRole'))});
+    reload(){   
         window.location.reload(false);
     }
-    
     handleCallback = (role) => {
         this.setState({userRole: role})
     }
@@ -36,46 +28,9 @@ class App extends React.Component {
                         <Route
                             exact
                             path='/'
-                            render={() => <Login parentCallback={this.handleCallback} />}
+                            render={() => <AjuteurContainer />}
                         />
 
-                        <Route
-                            exact
-                            path='/admin/user'
-                            render={() => <UserContainer />}
-                        />
-
-                        <Route
-                            exact
-                            path='/login'
-                            render={() => <Login parentCallback={this.handleCallback} />}
-                        />
-                        <Route
-                            exact
-                            path='/admin/sensor'
-                            render={() => <SensorContainer />}
-                        />
-                        <Route
-                            exact
-                            path='/admin/device'
-                            render={() => <DeviceContainer />}
-                        />
-                        <Route
-                            exact
-                            path='/guest/details'
-                            render={() => <ViewDetailsContainer/>}
-                        />
-                        <Route
-                            exact
-                            path='/guest/charts'
-                            render={() => <UserChartContainer/>}
-                        />
-                        <Route
-                            exact
-                            path='/guest/sensorData'
-                            render={() => <ViewSensorDataContainer/>}
-
-                        />
                         {/*Error*/}
                         <Route
                             exact
