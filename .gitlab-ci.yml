@@ -23,9 +23,9 @@ deploy:
     - apt-get update -qy
     - apt-get install -y ruby-dev
     - gem install dpl
-    - dpl --provider=heroku --app=juhasz-norbert-front --api-key=$HEROKU_API_KEY --skip_cleanup
+    - dpl --provider=heroku --app=juhasz-norbert-sensordata --api-key=$HEROKU_API_KEY --skip_cleanup
   environment:
     name: staging
-    url: https://juhasz-norbert-front.herokuapp.com/
+    url: https://juhasz-norbert-sensordata.herokuapp.com/
   only:
     - production
